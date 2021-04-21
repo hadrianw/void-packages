@@ -1,0 +1,25 @@
+# Template file for 'neko'
+pkgname=neko
+version=2.3.0
+revision=1
+archs="i686 x86_64"
+wrksrc="neko-${version//./-}"
+build_style=cmake
+configure_args="-DWITH_MYSQL=NO -DWITH_APACHE=NO"
+# git is used to download and patch
+# it should only be used to patch
+hostmakedepends="pkg-config git"
+makedepends="gc-devel openssl-devel pcre-devel zlib-devel sqlite-devel mbedtls-devel gtk+-devel"
+depends="gc openssl pcre zlib sqlite mbedtls gtk+"
+short_desc="Neko Virtual Machine"
+maintainer="Hadrian Węgrzynowski <hadrian@hawski.com>"
+license="MIT"
+homepage="nekovm.org"
+distfiles="https://github.com/HaxeFoundation/neko/archive/refs/tags/v${version//./-}.tar.gz"
+checksum=850e7e317bdaf24ed652efeff89c1cb21380ca19f20e68a296c84f6bad4ee995
+nostrip=yes
+
+post_install() {
+	vlicense LICENSE
+	vdoc CHANGES
+}
