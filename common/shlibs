@@ -3929,3 +3929,4 @@ libmariadb.so.3 libmariadbclient-10.5.9_1
 libmariadbd.so.19 libmariadbclient-10.5.9_1
 libinstpatch-1.0.so.2 libinstpatch-1.1.6_1
 libneko.so.2 neko-2.3.0_1
+libhl.so.1 hashlink-1.11_1

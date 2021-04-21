@@ -1,0 +1,24 @@
+# Template file for 'hashlink'
+pkgname=hashlink
+version=1.11
+revision=1
+#archs="i686 x86_64"
+build_style=cmake
+hostmakedepends="haxe"
+makedepends="libpng-devel libjpeg-turbo-devel libvorbis-devel libopenal-devel SDL2-devel glu-devel mbedtls-devel libuv-devel"
+depends="libpng libjpeg-turbo libvorbis libopenal SDL2 glu mbedtls libuv"
+short_desc="Virtual machine for Haxe"
+maintainer="Hadrian Węgrzynowski <hadrian@hawski.com>"
+license="MIT"
+homepage="https://hashlink.haxe.org/"
+distfiles="https://github.com/HaxeFoundation/hashlink/archive/refs/tags/${version}.tar.gz"
+checksum=b087ded7b93c7077f5b093b999f279a37aa1e31df829d882fa965389b5ad1aea
+
+pre_build() {
+	/usr/bin/haxelib install hashlink
+}
+
+post_install() {
+	rmdir "$DESTDIR/usr/lib"
+	vlicense extra/LICENSE
+}
