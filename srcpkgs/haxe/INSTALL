@@ -1,0 +1,7 @@
+case "$ACTION" in
+post)
+	if [ "$UPDATE" = "no" ]; then
+		./usr/bin/haxelib setup /usr/share/haxe/lib
+	fi
+	;;
+esac

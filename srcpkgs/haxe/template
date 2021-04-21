@@ -1,0 +1,49 @@
+# Template file for 'haxe'
+pkgname=haxe
+version=4.2.1
+revision=1
+#archs="i686 x86_64"
+#wrksrc=
+#create_wrksrc=yes
+build_style=gnu-makefile
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="ocaml opam m4 tar pkg-config rsync perl perl-String-ShellQuote perl-IPC-System-Simple mbedtls-devel git"
+makedepends="pcre-devel zlib-devel neko"
+depends="pcre zlib neko"
+short_desc="High-level strictly-typed programming language"
+maintainer="Hadrian Węgrzynowski <hadrian@hawski.com>"
+license="GPL-2.0-or-later, MIT"
+homepage="https://haxe.org/"
+nocross="opam is nocross"
+nostrip=yes
+
+do_fetch() {
+	# We must clone it instead of downloading the tarball because the build
+	# process expects the directory to be a git repository
+	git clone --depth 1 -b ${version} https://github.com/HaxeFoundation/haxe.git $wrksrc
+	cd $wrksrc
+	git submodule update --init --recursive --depth 1
+}
+
+do_patch() {
+	sed -i 's#^INSTALL_DIR=/usr/local$#INSTALL_DIR=/usr#' $wrksrc/Makefile
+}
+
+pre_build() {
+	opam init -y --compiler=ocaml-system --disable-sandboxing
+	eval $(opam env)
+
+	# pin the haxe package to the checked out Haxe source directory
+	opam pin add haxe $wrksrc --kind=path --no-action
+	# install the haxe package dependencies (as listed in the `opam` file)
+	opam install -y haxe --deps-only
+}
+
+post_install() {
+	rmdir "$DESTDIR/usr/lib"
+	vlicense extra/LICENSE.txt
+	vdoc CHANGES.txt
+}
