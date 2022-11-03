@@ -1,6 +1,6 @@
 # Template file for 'zerotier-one'
 pkgname=zerotier-one
-version=1.8.4
+version=1.10.2
 revision=1
 wrksrc=ZeroTierOne-${version}
 build_style=gnu-makefile
@@ -11,7 +11,7 @@ maintainer="Hadrian Węgrzynowski <hadrian@hawski.com>"
 license="custom:BPL-1.1"
 homepage="https://www.zerotier.com/"
 distfiles="https://github.com/zerotier/ZeroTierOne/archive/${version}.tar.gz"
-checksum=61b8c1ea5904cc87431939212033bb4d05d11f517860a01cac75f0090d94272b
+checksum=9f98b1670785f42294b9858068d42c6b8c2fdee6402e871a36562b47559e74e7
 repository=nonfree
 
 pre_install() {

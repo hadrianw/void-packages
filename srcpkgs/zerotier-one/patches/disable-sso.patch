@@ -1,0 +1,11 @@
+--- a/make-linux.mk	2022-11-03 13:36:53.512934985 +0100
++++ b/make-linux.mk	2022-11-03 13:36:27.999926708 +0100
+@@ -255,6 +255,8 @@
+ 	override DEFS+=-DZT_NO_TYPE_PUNNING
+ endif
+ 
++ZT_SSO_SUPPORTED=0
++
+ # Fail if system architecture could not be determined
+ ifeq ($(ZT_ARCHITECTURE),999)
+ ERR=$(error FATAL: architecture could not be determined from $(CC) -dumpmachine: $CC_MACH)
