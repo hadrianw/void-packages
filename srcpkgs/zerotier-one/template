@@ -1,6 +1,6 @@
 # Template file for 'zerotier-one'
 pkgname=zerotier-one
-version=1.10.4
+version=1.10.6
 revision=1
 wrksrc=ZeroTierOne-${version}
 build_style=gnu-makefile
@@ -10,8 +10,8 @@ short_desc="Network Virtualization Everywhere"
 maintainer="Hadrian Węgrzynowski <hadrian@hawski.com>"
 license="custom:BPL-1.1"
 homepage="https://www.zerotier.com/"
-distfiles="https://github.com/zerotier/ZeroTierOne/archive/${version}.tar.gz"
-checksum=5dc185a65baf8caa3fb739cbc8043677aa117604be9036a28c34f8fda5d6eafe
+distfiles="https://github.com/zerotier/ZeroTierOne/archive/refs/tags/${version}.tar.gz"
+checksum=3f0b59e0c290b18b93fddee1f7b927209538d84a88343b2f3ac61a6bf3c87910
 repository=nonfree
 
 pre_install() {
